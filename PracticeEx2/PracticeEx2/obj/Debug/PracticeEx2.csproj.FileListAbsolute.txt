@@ -1,0 +1,7 @@
+D:\Вышка\Практика\Practice2\PracticeEx2\PracticeEx2\bin\Debug\PracticeEx2.exe.config
+D:\Вышка\Практика\Practice2\PracticeEx2\PracticeEx2\bin\Debug\PracticeEx2.exe
+D:\Вышка\Практика\Practice2\PracticeEx2\PracticeEx2\bin\Debug\PracticeEx2.pdb
+D:\Вышка\Практика\Practice2\PracticeEx2\PracticeEx2\obj\Debug\PracticeEx2.csprojResolveAssemblyReference.cache
+D:\Вышка\Практика\Practice2\PracticeEx2\PracticeEx2\obj\Debug\PracticeEx2.csproj.CoreCompileInputs.cache
+D:\Вышка\Практика\Practice2\PracticeEx2\PracticeEx2\obj\Debug\PracticeEx2.exe
+D:\Вышка\Практика\Practice2\PracticeEx2\PracticeEx2\obj\Debug\PracticeEx2.pdb
