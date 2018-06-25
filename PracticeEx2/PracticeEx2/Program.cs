@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+ 
 namespace PracticeEx2
 {
     class Program
@@ -19,21 +19,12 @@ namespace PracticeEx2
                 Console.Write("\n");
             }
         }
-        static List<int[]> Reverse(List<int[]> list)
-        {
-            foreach (int[] elem in list)
-            {
-                int a = elem[0];
-                elem[0] = elem[1];
-                elem[1] = a;
-            }
-            return list;
-        }
+        static int n, average;
         static int BinarySearch(int left, int right, int value, List<int[]> list)
         {
             while (left < right)
             {
-                int middle = left + (right - 1) / 2;
+                int middle = left + (right - left) / 2;
                 if (list[middle][1] - value <= 0)
                 {
                     left = middle + 1;
@@ -41,8 +32,7 @@ namespace PracticeEx2
                 else
                     right = middle;
             }
-            return
-                right;
+            return right;
         }
         static void Main(string[] args)
         {
@@ -52,38 +42,42 @@ namespace PracticeEx2
             {
                 nd[i] = Convert.ToInt32(str[i]);
             }
+            n = nd[0];
+            average = nd[1];
             List<int[]> inputList = new List<int[]>();
-            for (int i = 0; i < nd[0]; i++)
+            List<int[]> outputList = new List<int[]>();
+            int[] empty = new int[] { 0, 0 };
+            for (int i = 0; i < n; i++)
+                outputList.Add(empty);
+            for (int i = 0; i < n; i++)
             {
-                string[] inputStr = ((i + 1).ToString() + " " + Console.ReadLine()).Split(' ');
-                int[] input = new int[inputStr.Length];
-                for (int j = 0; j < input.Length; j++)
+                int curd = Convert.ToInt32(Console.ReadLine());
+                if (curd != average)
                 {
-                    input[j] = Convert.ToInt32(inputStr[j]);
+                    int first = i + 1;
+                    int second = curd;
+                    int[] arr = new int[] {first, second };
+                    inputList.Add(arr);
                 }
-                inputList.Add(input);
             }
-            int average = nd[1];
             var sortedList = inputList.OrderBy(x => x[1]).ToList();
-            ShowList(sortedList);
-            List<int[]> output = new List<int[]>();
-            for (int i = 0; i < inputList.Count; i++)
+            for (int i = 0; i < sortedList.Count; i++)
             {
-                if (inputList[i][1] == average)
+                if (sortedList[i][1] == average)
                     break;
                 else
                 {
-                    int ind = BinarySearch(i + 1, inputList.Count, average - inputList[i][1], inputList);
-                    int[] arr = new int[2];
-                    arr[0] = inputList[ind][0];
-                    arr[1] = average - inputList[i][1];
-                    output[inputList[i][0] - 1] = arr;
-                    inputList[ind][1] -= average - inputList[i][1];
-                    inputList[i][1] = average;
+                    int ind = BinarySearch(i + 1, sortedList.Count, average - sortedList[i][1], sortedList);
+                    int first = sortedList[ind][0];
+                    int second = average - sortedList[i][1];
+                    int[] arr = new int[] { first, second };
+                    outputList[sortedList[i][0] - 1] = arr;
+                    sortedList[ind][1] -= (average - sortedList[i][1]);
+                    sortedList[i][1] = average;
                 }
             }
-            ShowList(output);
+            ShowList(outputList);
+            Console.ReadLine();
         }
     }
 }
-
